@@ -35,6 +35,30 @@ app.post('/create-room', async (req, res) => {
     }
 });
 
+// Create RoomCode from RoomId
+app.post('/create-room-code', async (req, res) => {
+    const { room_id, role } = req.body;
+
+    const payload = {
+        "room_id": req.body.room_id,
+        "role": req.body.role || "guest",
+    }
+  
+    if (!room_id || !role) {
+      return res.status(400).json({ error: 'Room ID and role are required' });
+    }
+
+    try {
+        const resData = await apiService.post(`/room-codes/room/${room_id}`, payload);
+        res.json(resData);
+    } catch (err) {
+        console.error(err);
+        res.status(500).send("Internal Server Error");
+    }
+
+
+})
+
 // Generate an auth token for a peer to join a room
 app.post('/auth-token', (req, res) => {
     try {
