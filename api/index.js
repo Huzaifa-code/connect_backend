@@ -1,8 +1,8 @@
 let express = require('express');
 require('dotenv').config();
 const moment = require('moment');
-const { APIService } = require('./services/APIService');
-const { TokenService } = require('./services/TokenService');
+const { APIService } = require('../src/services/APIService');
+const { TokenService } = require('../src/services/TokenService');
 
 let app = express();
 app.use(express.json()); // for parsing request body as JSON
@@ -18,7 +18,7 @@ app.listen(port, () => {
 
 app.get('/', (req, res) => {
     res.send(
-        <h1>Connect Backend</h1>
+       "<h1>Connect Backend</h1>"
     )
 })
 
@@ -143,3 +143,5 @@ app.get('/session-analytics-by-room', async (req, res) => {
     }
 });
 
+
+module.exports = app;

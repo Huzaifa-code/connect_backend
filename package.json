@@ -2,11 +2,15 @@
   "name": "connect_backend",
   "version": "1.0.0",
   "description": "",
-  "main": "src/app.js",
+  "main": "./api/index.js",
+  "engines": {
+    "node": "14.x"
+  },
   "scripts": {
-    "start": "node src/app.js",
-    "start:dev": "nodemon -L -P 2000 src/app.js",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "node ./api/index.js",
+    "start:dev": "nodemon -L -P 2000 ./api/index.js",
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "echo 'No build necessary for this backend project'" 
   },
   "author": "Huzaifa Qureshi",
   "license": "ISC",
