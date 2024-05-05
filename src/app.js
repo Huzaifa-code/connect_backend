@@ -16,6 +16,11 @@ app.listen(port, () => {
     console.log(`Token server started on ${port}!`);
 });
 
+app.get('/', (req, res) => {
+    res.send(
+        <h1>Connect Backend</h1>
+    )
+})
 
 // Create a new room, either randomly or with the requested configuration
 app.post('/create-room', async (req, res) => {
