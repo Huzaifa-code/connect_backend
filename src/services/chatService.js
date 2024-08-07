@@ -42,6 +42,23 @@ const getChats = async () => {
   }
 };
 
+const deleteCache = async () => {
+  const cacheKey = 'chats'; // Adjust the key based on your application
+
+  try {
+    if (!redisClient.isOpen) {
+      await redisClient.connect();
+    }
+    
+    await redisClient.del(cacheKey);
+    console.log('Cache deleted');
+  } catch (error) {
+    console.error('Error deleting cache:', error);
+    throw error;
+  }
+};
+
 module.exports = {
   getChats,
+  deleteCache
 };
